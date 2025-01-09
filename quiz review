@@ -1,0 +1,27 @@
+#function definition
+def add_numbers(a, b):
+    return a + b
+
+def circle_numbers(a):
+    return a * a * 3.14
+
+def FtoC_numbers(j):
+    return (j-32)*5/9
+
+def AverageOfThree(i, j, k):
+    return 	(i + j + k) / 3		#<---google formula for the average of 3 numbers!
+
+result = add_numbers(5, 3)#function call
+print("The sum of the numbers is:", result)
+
+result = circle_numbers(5)
+print("The area of the circles is:", result)
+
+result = FtoC_numbers(32)
+print("The Temperature  of the Farenheight is:", result)
+
+result = AverageOfThree(5, 6, 7)
+print("The Average  of the three numbers is:", result)
+
+
+#call the average function here :)
