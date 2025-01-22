@@ -1,0 +1,5 @@
+myList = [ "jeremy", "Kenny", "Mykail", "Diana", "Alejendro"]
+print(myList)
+myList.append("Guh")
+print(myList)
+print(myList[0], myList[2])
