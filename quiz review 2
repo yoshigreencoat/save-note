@@ -1,0 +1,6 @@
+def DuckQuack():
+   ducks = int(input("how many ducks do you want?"))
+    for i in range(ducks):
+        print("quack")
+
+DuckQuack()
