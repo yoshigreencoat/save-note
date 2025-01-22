@@ -1,0 +1,13 @@
+#Write a program that asks  a user for two numbers.
+#if the first one is larger,
+#the program prints out "first one bigger!". Otherwise it printws out "second one bigger!".
+
+def nums(num1, num2):
+    num1 = int(input("enter first number"))
+    num2 = int(input("enter second number"))
+    if num1>num2:
+        print("num1 is bigger!")
+    else:
+        print("num2 is bigger!")
+
+nums(6, 7)
