@@ -1,0 +1,68 @@
+#include<iostream>
+using namespace std;
+
+
+float PyramidVolume(int length, int width, int height);
+
+
+int main() {
+
+	 PyramidVolume(3, 4, 5); 
+}
+
+
+float PyramidVolume(int length, int width, int height) {
+	 return (length* width* height) / 3;
+}
+
+
+
+
+
+#include<iostream>
+using namespace std;
+
+
+bool isPotato(string word);
+
+int main() {
+
+	cout << "is this a potato?" << isPotato("carrot");
+}
+
+
+bool isPotato(string word) {
+	if (word == "potato")
+		return true;
+	else
+		return false;
+}
+
+
+
+
+#include<iostream>
+using namespace std;
+
+
+void HiChew();
+
+
+int main() {
+
+
+}
+
+void HiChew() {
+	int num = rand() % 100;
+	if (num < 25)
+		cout << "you got a kiwi!" << endl;
+	else if (num < 50)
+		cout << "you got a mango!" << endl;
+	else if (num < 75)
+		cout << "you got a pineapple!" << endl;
+	else
+		cout << "you got a dragonfruit!" << endl;
+
+}
+
