@@ -1,0 +1,23 @@
+def calculate_circumference(r):
+    return 2*3.14*r
+
+print(calculate_circumference(10))
+
+def zigzag_pattern(n):
+    for i in range(1, n, 2):
+        print(i, end = " ")
+    for i in range(n-1, 0, -2):
+        print(i, end = " ")
+        
+zigzag_pattern(10)
+        
+        
+def SumsOf3sAnd5s(n):
+    sum = 0
+    for i in range(n):
+        if i %3==0:
+        sum+=i
+        if i%5==0:
+    return sum
+
+print(SumsOf3sAnd5s(10))
