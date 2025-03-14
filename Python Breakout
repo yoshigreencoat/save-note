@@ -1,0 +1,175 @@
+import pygame
+import random
+pygame.init()
+# Import the game library and initialise the game engine
+screen = pygame.display.set_mode((800,800))
+pygame.display.set_caption("mykail Breakout")
+#GAME VARIABLES--------------------------------------------------
+# here's the variable that runs our game loop
+doExit = False
+# The clock will be used to control how fast the screen updates
+clock = pygame.time.Clock()
+p1x = 350
+p1y = 750
+#ball variables go here
+ #ball physics goes here
+bx = 350
+by = 250
+bVx = 5
+bVy = 5
+bs = 0
+p1Score = 0
+p2Score = 0
+
+class brick:
+    def __init__(self, xpos, ypos):
+        self.xpos = xpos
+        self.ypos = ypos
+        self.color = (random.randrange(100, 250),random.randrange(100, 250),random.randrange(100, 250))
+        self. isDead = False
+    def draw(self):
+        if not self.isDead:
+            pygame.draw.rect(screen, self.color, (self.xpos, self.ypos, 100, 50))
+        
+    #bounding box collision
+    def collide(self, bx, by):
+        if not self.isDead:
+            if (bx + bs > self.xpos and
+                bx < self.xpos + 100 and # Width of brick is 100
+                by + bs > self.ypos and
+                by < self.ypos + 50):   # Height of brick is 50
+                self.isDead = True
+                return True
+            return False
+        
+
+
+
+b1 = brick(50, 50)
+b2 = brick(190, 50)
+b3 = brick(330, 50)
+b4 = brick(460, 50)
+b5 = brick(590, 50)
+b6 = brick(50, 130)
+b7 = brick(190, 130)
+b8 = brick(330, 130)
+b9 = brick(460, 130)
+b10 = brick(590, 130)
+    
+
+while not doExit: #GAME LOOP########################################################################
+#event queue stuff
+    clock.tick(60) #set the FPS
+    
+    #event checker
+    for event in pygame.event.get(): #check if user did somethingif event.type == pygame.QUIT: #check if user clicked close
+     if event.type == pygame. QUIT: #check if user did something
+         doExit = True #Flag that we are done so we exit game loop 
+
+
+    #game logic
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_a]:
+     p1x-=5
+    if keys[pygame.K_d]:
+     p1x+=5
+    
+        
+    #ball movement
+    bx += bVx
+    by += bVy
+    
+    #collision for first paddle
+    if by > p1y + 20 and bx + 20 > p1x and bx < p1x + 15:
+         bVy *= -1
+         
+    #reflect ball off side walls of screen
+    if bx < 0 or bx + 20 > 800:
+        bVx *= -1
+        
+    if by < 0 or by + 20 > 800:
+        bVy *= -1
+        
+    #if bx > 780:
+        
+        #p1Score += 1
+
+    #if bx < 1:
+        
+        #p2Score += 1
+    # Ball collision with each brick
+    if bx < p1x + 125 and by + 10 > p1y and bx > p1x - 10:
+        bVy *= -1
+        print("paddle")
+        
+    if b1.collide(bx, by):
+        bVy *= -1
+    
+    if b2.collide(bx, by):
+        bVy *= -1
+        
+    if b3.collide(bx, by):
+        bVy *= -1
+    
+    if b4.collide(bx, by):
+        bVy *= -1
+    
+    if b5.collide(bx, by):
+        bVy *= -1
+    
+    if b6.collide(bx, by):
+        bVy *= -1
+    
+    if b7.collide(bx, by):
+        bVy *= -1
+    
+    if b8.collide(bx, by):
+        bVy *= -1
+        
+    if b9.collide(bx, by):
+        bVy *= -1
+    
+    if b10.collide(bx, by):
+        bVy *= -1
+        
+    #render section: all your drawing functions go between screen.fill and display.flip!
+    screen.fill((0,0,0)) #wipe screen black
+    b1.draw()
+    b2.draw()
+    b3.draw()
+    b4.draw()
+    b5.draw()
+    b6.draw()
+    b7.draw()
+    b8.draw()
+    b9.draw()
+    b10.draw()
+    
+
+     #draw a line down the middle
+    #pygame.draw.line(screen, (0,0,0), [400, 0], [400, 800], 10)
+    pygame.draw.rect(screen, (255, 255, 255,), (p1x, p1y, 100, 20), 1)
+     #update the screen
+    
+    #draw ball here!
+    
+    pygame.draw.ellipse(screen, (200, 255, 255,), (bx, by, 30, 30))
+    #display scores
+    font = pygame.font.Font(None, 74)
+    text = font.render(str(p1Score), 0, (255, 255, 255))
+    screen.blit(text, (250,10))
+            
+            
+            
+        
+
+    
+    
+    pygame.display.flip()
+    
+
+    
+    
+    
+#END GAME LOOP             
+pygame.quit()#when game is done close down pygame
