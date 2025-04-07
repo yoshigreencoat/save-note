@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+int main() {
+
+	int school;
+	cout << "choose a number of which school your going to." << endl;
+	cin >> school;
+
+	if (school <= 5)
+		cout << " Enjoy elementary school!" << endl;
+
+	if (school >= 6 && school <=8)
+		cout << "have fun at middle school!" << endl;
+
+	if (school >= 9)
+		cout << "prepare for high school!" << endl;
+}
+
+
+#include <iostream>
+using namespace std;
+int main() {
+
+	int numbers;
+		cout << "choose a number between 10 and 100." << endl;
+		cin >> numbers;
+
+		for (int i = 10; i <= numbers; i+=2)
+			cout << i << " ";
+}
+
+#include <iostream>
+using namespace std;
+
+void Twoletters(char letter1, char letter2);
+
+int main() {
+	char l1, l2;
+	cout << "enter two letters:" << endl;
+	cin >> l1;
+	cin >> l2;
+	Twoletters(l1, l2);
+}
+
+void Twoletters(char letter1, char letter2) {
+	cout << letter1 << letter2 << endl;
+}
