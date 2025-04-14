@@ -1,0 +1,65 @@
+#include<iostream>
+#include<windows.h>
+using namespace std;
+int main() {
+
+	int freq;
+	int dur;
+	int n;
+
+	cout << "please enter three numbers (frequency, duration, number):" << endl;
+	cin >> freq;
+	cin >> dur;
+	cin >> n;
+
+	for (int i = 0; i < n; i++)
+		Beep(freq, dur);
+}
+
+#include<iostream>
+#include<windows.h>
+using namespace std;
+
+void TooManyBeeps(int pitch, int freq, int num);
+
+
+int main() {
+
+	int freq;
+	int dur;
+	int n;
+
+	cout << "please enter three numbers (frequency, duration, number):" << endl;
+	cin >> freq;
+	cin >> dur;
+	cin >> n;
+
+	for (int i = 0; i < n; i++)
+		Beep(freq, dur);
+
+	TooManyBeeps(freq, dur, n);
+}
+
+void TooManyBeeps(int freq, int dur, int num) {
+
+	for (int i = 0; i < num; i++)
+		Beep(pitch, freq);
+}
+
+#include <iostream>
+using namespace std;
+int main() {
+
+	int num;
+	cout << "enter your favorite number" << endl;
+	cin >> num;
+
+	if (num == 5)
+		cout << " that's my favorite number too!" << endl;
+
+	else if (num < 8)
+		cout << "that's a low number!" << endl;
+
+	else if (num > 9)
+		cout << "that's a high number!" << endl;
+}
