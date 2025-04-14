@@ -1,0 +1,123 @@
+#include <iostream>
+using namespace std;
+
+//function prototypes
+void printBoard(const char board[3][3]);
+void PlayerTurn(char board[3][3], char player);
+bool checkWin(const char board[3][3]);
+bool checkFull(const char board[3][3]);
+int main() {
+
+	cout << "Welcome to Tic-Tac-Toe!" << endl;
+
+	char board[3][3] = { {'-', '-', '-'}, { '-', '-', '-'}, {'-', '-', '-'} }; //2D array to hold board
+	char player = 'X'; //keeps track whose turn it is
+	bool endGame = false; //runs the game loop
+	
+	while (endGame == false ) {
+
+		PlayerTurn(board, player); //get user input
+		printBoard(board); //print current board
+
+		if (checkWin(board) == true) { //check if there are 3 in a row 
+			cout << "Player " << player << " wins!" << endl;
+			endGame = true; //quit game loop
+		}
+		if (checkFull(board) == true) { //check if there are 3 in a row 
+			cout << "it's a tie! " << endl;
+			endGame = true; //quit game loop
+		}
+		if (player == 'X') //if player is X, change to Y
+			player = 'Y';
+		else if (player == 'Y')
+			player = 'X';
+
+		if (endGame == false)
+			cout << "Player " << player << "'s turn!" << endl << endl;
+		
+	}// end game loop
+	while (endGame == false) {
+		cout << "Player " << player << "'s turn!" << endl << endl;
+
+		if (player == 'X') // if player is X, change to Y
+			player = 'Y';
+		//add a second conditional statement here to swap player back to X
+		else if (player == 'Y')
+			player = 'X';
+
+	}
+	
+	
+}
+
+
+
+//Function to ptint the Tic-Tac-Toe board
+void printBoard(const char board[3][3]) {
+	for (int i = 0; i < 3; i++) { //handles rows
+		for (int j = 0; j < 3; j++) { //handles columns
+			cout << board[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
+void PlayerTurn(char board[3][3], char player) {
+
+	//declare row and col int variables
+	int row, col;
+
+		//usk user for row and col and store them
+		if (player == 'X')
+			cout << "Player X, type row and column to place X:" << endl;
+		else
+			cout << "Player Y, type row and column to place O:" << endl;
+
+		cin >> row;
+		cin >> col;
+
+		//place the X or O into the board (minus 1 since arrays star at 0)
+		if (player == 'X')
+			board[row - 1][col - 1] = 'X'; // place an X for player 1
+		else board[row - 1][col - 1] = 'O'; // otherwise place an O
+
+		cout << endl;
+
+
+}
+//Function to check if the game has been won
+bool checkWin(const char board[3][3]) {
+
+	// Check horizontal and vertical lines-------------------------------
+	for (int i = 0; i < 3; i++) {
+		//check rows
+		if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != '-')
+			return true;
+		//check columns
+		if (board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[0][i] != '-')
+			return true;
+	}
+    // Check diagonals----------------------------------------------------------
+	//check top left to bottom right
+	if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != '-')
+		return true;
+	//check top right to bottom left
+	if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != '-')
+		return true;
+
+	return false; //you'll only get to this line if NONE of the above if statements return true
+
+}
+
+bool checkFull(const char board[3][3]) {
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			if (board[i][j] == '-') {
+				return false;
+			}
+				
+		}
+	}
+
+	return true;
+}
+      
